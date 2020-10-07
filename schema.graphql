@@ -1,0 +1,15 @@
+type Option {
+  value: String!
+  votes: Int!
+}
+
+type Poll {
+  question: String!
+  votes: Int!
+  options: [Option!]!
+}
+
+type Vote {
+  ip: String!
+  poll: ID!
+}
