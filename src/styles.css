@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: theme("colors.background");
+  @apply font-sans;
+}
+
+.toggle {
+  @apply absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 transition-transform duration-300 ease-in-out bg-white;
+}
+
+.toggle-checked {
+  @apply toggle transform translate-x-full;
+}
+
+.option-base {
+  @apply p-2 rounded-lg capitalize text-primary text-center w-full font-normal text-lg cursor-pointer w-full block transition duration-200;
+}
+
+.option-base input {
+  @apply hidden;
+}
+
+.option {
+  @apply option-base bg-border;
+}
+
+.option-checked {
+  @apply option-base bg-focus;
+}
+
+.tip-base {
+  @apply p-2 text-center w-full font-bold text-lg block;
+}
+
+.tip-info {
+  @apply tip-base bg-action text-secondary;
+}
+
+.tip-danger {
+  @apply tip-base bg-progress text-primary;
+}
+
+.result {
+  @apply py-2 px-4 rounded-lg capitalize text-primary bg-border text-center w-full font-norma w-full transition duration-200 relative flex justify-between items-center overflow-hidden;
+}
+
+.button {
+  @apply p-2 rounded-lg capitalize text-secondary bg-action text-center w-full font-bold text-lg;
+}
+
+.input {
+  @apply py-2 pl-4 pr-2 rounded-lg border-2 bg-transparent border-border placeholder-alternative text-primary placeholder-opacity-75 focus:border-focus transition-border duration-200 text-lg w-full active:border-focus;
+}

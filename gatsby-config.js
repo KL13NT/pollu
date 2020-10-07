@@ -6,29 +6,36 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/src/assets`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-plugin-sass`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        postCssPlugins: [
+          require("tailwindcss"),
+          require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
+        ],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Pollu - Delightful polls with a single click`,
+        short_name: `Pollu`,
+        start_url: `/`,
+        background_color: `#202040`,
+        theme_color: `#FFFFFF`,
+        display: `minimal-ui`,
+        icon: `src/assets/monogram.svg`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
