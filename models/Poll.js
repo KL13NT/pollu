@@ -1,4 +1,4 @@
-const { Schema, Model } = require("mongoose")
+const { Schema, model } = require("mongoose")
 
 const Option = new Schema({
   value: { type: String, required: true },
@@ -12,6 +12,4 @@ const Poll = new Schema({
   options: { type: [Option], required: true, default: [] },
 })
 
-Poll.index({ question: 1 })
-
-module.exports = Model("Poll", Poll)
+module.exports = model("Poll", Poll)

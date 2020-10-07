@@ -1,4 +1,13 @@
-{
-  "arrowParens": "avoid",
-  "semi": false
-}
+tabWidth: 2
+useTabs: true
+semi: false
+singleQuote: true
+quoteProps: "as-needed"
+jsxSingleQuote: true
+trailingComma: "none"
+bracketSpacing: true
+jsxBracketSameLine: false
+arrowParens: "avoid"
+requirePragma: false
+proseWrap: "preserve"
+endOfLine: "lf"
