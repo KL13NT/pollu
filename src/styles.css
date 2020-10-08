@@ -67,7 +67,7 @@ body {
 }
 
 .toast {
-	@apply button m-auto fixed left-0 right-0 w-11/12 block normal-case;
+	@apply button m-auto fixed left-0 right-0 w-11/12 block normal-case max-w-screen-sm;
 
 	animation-name: popinoutMobile;
 	animation-duration: 4.5s;

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+const { Redirect } = require('@reach/router')
 
 import '../styles.css'
 
@@ -22,7 +23,7 @@ const DynamicFields = ({ onChange: changeHandler, options }) => {
 		const index = e.target.dataset.index
 
 		const copy = Array.from(fields)
-		copy[index] = e.target.value
+		copy[index] = e.target.value.trim()
 
 		setFields(copy)
 		shouldAdd()
@@ -52,6 +53,7 @@ const DynamicFields = ({ onChange: changeHandler, options }) => {
 
 const IndexPage = () => {
 	const [notification, setNotification] = useToasts()
+	const [disabled, toggle] = useState(false)
 	const [state, setState] = useState({
 		question: '',
 		multiple: false,
@@ -84,61 +86,84 @@ const IndexPage = () => {
 		if (poll.options.length < 2)
 			return setNotification('You must create at least 2 options')
 
-		console.log(poll)
+		toggle(true)
+		setNotification('Creating poll, please wait')
+
+		fetch('/api/v1', {
+			body: JSON.stringify(poll),
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then(res => res.json())
+			.then(({ poll }) => {
+				window.location.href = `/${poll}`
+			})
+			.catch(err => {
+				console.log(err)
+				setNotification(err.error)
+			})
+			.finally(() => {
+				toggle(false)
+				setNotification('Created poll successfully, redirecting you.')
+			})
 	}
 
 	return (
-		<div className='bg-background text-center text-lg p-8'>
+		<div className='bg-background text-center text-lg p-8 max-w-screen-sm m-auto'>
 			{notification ? <Toast>{notification}</Toast> : null}
 
 			<img src={Logo} alt='Pollu logo' className='block m-auto h-16' />
 			<h1 className='mt-4'>Delightful anonymous polls a click away!</h1>
 
 			<form className='mt-8' onSubmit={onSubmit}>
-				<Input
-					id='question'
-					name='question'
-					placeholder="What's on your mind?"
-					maxLength='280'
-					label='question'
-					className='mt-4'
-					type='text'
-					value={state.question}
-					onChange={onChange}
-					data-type='question'
-					required
-				/>
-
-				<DynamicFields options={state.options} onChange={onFieldsChange} />
-				<span className='text-left mt-4 block text-base text-alternative'>
-					20 options at most, added automatically.
-				</span>
-
-				<div className='flex w-full justify-between items-center mt-4'>
-					<p>Allow multiple poll answers</p>
-					<Toggle
-						label='Allow multiple poll answers'
-						id='multiple'
-						name='multiple'
-						onChange={onToggleMultiple}
+				<fieldset disabled={disabled}>
+					<Input
+						id='question'
+						name='question'
+						placeholder="What's on your mind?"
+						maxLength='280'
+						label='question'
+						className='mt-4'
+						type='text'
+						value={state.question}
+						onChange={onChange}
+						data-type='question'
+						required
 					/>
-				</div>
 
-				<Button type='submit' className='mt-4'>
-					Creat Poll
-				</Button>
+					<DynamicFields options={state.options} onChange={onFieldsChange} />
+					<span className='text-left mt-4 block text-base text-alternative'>
+						20 options at most, added automatically.
+					</span>
+
+					<div className='flex w-full justify-between items-center mt-4'>
+						<p>Allow multiple poll answers</p>
+						<Toggle
+							label='Allow multiple poll answers'
+							id='multiple'
+							name='multiple'
+							onChange={onToggleMultiple}
+						/>
+					</div>
+
+					<Button type='submit' className='mt-4'>
+						Creat Poll
+					</Button>
+				</fieldset>
 			</form>
 			<p className='mt-4 text-base text-alternative'>
 				I don’t store any private data but your encrypted IP address. This is to
-				detect spam and prevent duplications, and helps me improve the service.
+				detect spam and prevent duplications. This also helps me improve the
+				service.
 			</p>
 
 			<p className='mt-4 text-base text-alternative'>
 				An IP address in isolation is not personal data under the UK Data
-				Protection Act, according to the Information Commissioner. But an IP
-				address can become personal data when combined with other information or
-				when used to build a profile of an individual, even if that individual's
-				name is unknown.
+				Protection Act. But an IP address can become personal data when combined
+				with other information or when used to build a profile of an individual,
+				even if that individual's name is unknown.
 			</p>
 
 			<p className='mt-8 text-base'>
