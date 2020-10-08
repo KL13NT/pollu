@@ -22,6 +22,7 @@ const schemas = {
 
 	create: joi
 		.object({
+			multiple: joi.boolean().required(),
 			question: joi.string().trim().min(6).max(280).required(),
 			options: joi
 				.array()
@@ -152,12 +153,13 @@ app.post('/api/v1/', async (req, res) => {
 
 		await connectToDatabase()
 
-		// const ip = getIp(req)
+		const author = getIp(req)
 		// TODO: add rate-limit per IP
+		// TODO: encrypt
 
 		const poll = req.body
 
-		const created = await Poll.create({ ...poll })
+		const created = await Poll.create({ ...poll, author })
 
 		return res.status(201).json({ poll: created._id })
 	} catch (err) {
