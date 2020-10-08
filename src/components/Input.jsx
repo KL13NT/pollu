@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
-export function Input({ id, label, ...props }) {
-  return (
-    <>
-      <label aria-label={label} for={id} />
-      <input className="input" id={id} {...props} />
-    </>
-  )
+export function Input({ id, label, className, ...props }) {
+	return (
+		<>
+			<label aria-label={label} for={id} />
+			<input className={`input ${className}`} id={id} {...props} />
+		</>
+	)
 }

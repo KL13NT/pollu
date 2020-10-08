@@ -95,7 +95,7 @@ app.post('/api/v1/:poll/vote', async (req, res) => {
 
 		await connectToDatabase()
 
-		const ip = getIp(req)
+		const author = getIp(req)
 
 		const { poll } = req.params
 		const { option } = req.body
@@ -104,14 +104,14 @@ app.post('/api/v1/:poll/vote', async (req, res) => {
 		const found = await Poll.findOne({ _id }).lean().exec()
 
 		if (!found) return responses.NOT_FOUND(res)
-		if (await Vote.exists({ ip, poll: _id }))
+		if (await Vote.exists({ author, poll: _id }))
 			return responses.CONFLICT(res, 'You already voted this poll')
 
 		if (option > found.options.length - 1)
 			return responses.NOT_FOUND(res, 'Selected option not found')
 
 		await Vote.create({
-			ip,
+			author,
 			option,
 			poll
 		})

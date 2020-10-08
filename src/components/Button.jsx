@@ -1,14 +1,11 @@
-import React from "react"
+import React from 'react'
 
-export function Button({ children, ...props }) {
-  return (
-    <>
-      <button
-        className="button"
-        {...props}
-      >
-        {children}
-      </button>
-    </>
-  )
+export function Button({ children, className, ...props }) {
+	return (
+		<>
+			<button className={`button ${className}`} {...props}>
+				{children}
+			</button>
+		</>
+	)
 }
