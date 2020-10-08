@@ -28,6 +28,13 @@ module.exports = {
 				icon: `src/assets/monogram.svg`
 			}
 		},
-		`gatsby-plugin-offline`
+		`gatsby-plugin-offline`,
+		{
+			resolve: `@sentry/gatsby`,
+			options: {
+				dsn: process.env.SENTRY_KEY,
+				sampleRate: 0.7
+			}
+		}
 	]
 }

@@ -5,6 +5,10 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@sentry/gatsby": "^5.25.0",
+    "@sentry/node": "^5.25.0",
+    "@sentry/tracing": "^5.25.0",
+    "add": "^2.0.6",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -27,7 +31,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "tailwindcss": "^1.8.11"
+    "tailwindcss": "^1.8.11",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

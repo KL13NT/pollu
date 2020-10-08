@@ -11,6 +11,7 @@ const Vote = require('../models/Vote')
 const responses = require('../utils/responses')
 
 const { Id, getIp } = require('../utils/general')
+const { captureException } = require('../utils/sentry')
 const { connectToDatabase } = require('../utils/db')
 
 const schemas = {
@@ -47,6 +48,12 @@ const schemas = {
 
 const app = express()
 
+// For edge-caching on all Vercel zones
+// Read more https://vercel.com/docs/serverless-functions/edge-caching
+app.use((req, res, next) => {
+	res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+	next()
+})
 app.use(express.json())
 app.use(cors())
 
@@ -80,7 +87,7 @@ app.get('/api/v1/:poll/results', async (req, res) => {
 			votes
 		})
 	} catch (err) {
-		console.log(err)
+		captureException(err)
 		return responses.INTERNAL(res)
 	}
 })
@@ -119,7 +126,7 @@ app.post('/api/v1/:poll/vote', async (req, res) => {
 
 		return res.status(201).json({})
 	} catch (err) {
-		console.log(err)
+		captureException(err)
 		return responses.INTERNAL(res)
 	}
 })
@@ -140,7 +147,7 @@ app.get('/api/v1/:poll', async (req, res) => {
 
 		return res.status(200).json(found)
 	} catch (err) {
-		console.log(err)
+		captureException(err)
 		return responses.INTERNAL(res)
 	}
 })
@@ -163,7 +170,7 @@ app.post('/api/v1/', async (req, res) => {
 
 		return res.status(201).json({ poll: created._id })
 	} catch (err) {
-		console.log(err)
+		captureException(err)
 		return responses.INTERNAL(res)
 	}
 })
