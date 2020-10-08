@@ -18,7 +18,7 @@ function useToasts() {
 function Toast({ children, className, ...props }) {
 	return (
 		<>
-			<div className={`toast ${className}`} {...props}>
+			<div role='alert' className={`toast ${className}`} {...props}>
 				{children}
 			</div>
 		</>

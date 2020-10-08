@@ -2,34 +2,35 @@ import React, { useState } from 'react'
 
 export function Toggle({ id, label, onChange, ...props }) {
 	const [checked, set] = useState(false)
+	const [focused, focus] = useState(false)
 
 	const toggle = () => {
 		onChange(!checked)
 		set(!checked)
 	}
 
-	const classes = checked ? 'toggle-checked' : 'toggle'
+	const onFocus = () => focus(true)
+	const onBlur = () => focus(false)
 
 	return (
 		<>
 			<label
 				htmlFor={id}
 				aria-label={label}
-				className='inline-flex items-center cursor-pointer'
+				className='toggle'
+				data-checked={checked}
+				data-focused={focused}
 			>
 				<span className='relative'>
-					<span
-						className={`block w-10 h-6 transition-background-color duration-300 ${
-							checked ? 'bg-focus' : 'bg-border'
-						} rounded-full shadow-inner`}
-					/>
-					<span className={classes}>
+					<span className={checked ? 'bg-focus' : 'bg-border'} />
+					<span>
 						<input
 							id={id}
 							type='checkbox'
-							className='absolute opacity-0 w-0 h-0'
 							checked={checked}
 							onChange={toggle}
+							onFocus={onFocus}
+							onBlur={onBlur}
 							{...props}
 						/>
 					</span>

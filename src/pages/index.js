@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const { Redirect } = require('@reach/router')
+import * as Sentry from '@sentry/gatsby'
 
 import '../styles.css'
 
@@ -97,12 +97,12 @@ const IndexPage = () => {
 			}
 		})
 			.then(res => res.json())
-			.then(({ poll }) => {
-				window.location.href = `/${poll}`
+			.then(res => {
+				window.location.href = `/${res.poll}`
 			})
 			.catch(err => {
-				console.log(err)
 				setNotification(err.error)
+				Sentry.captureException(err)
 			})
 			.finally(() => {
 				toggle(false)
