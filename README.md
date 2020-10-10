@@ -62,7 +62,6 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── pages
     ├── public
     ├── src
-    ├── utils
 
 1.  **`/.next`**: This directory is produced by Nextjs for development purposes.
 
@@ -82,19 +81,9 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 9.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end (what you see in the browser) such as React components, Storybook stories, and styling. `src` is a convention for “source code”.
 
-10.  **`/utils`**: 
+10.  **`/utils`**: A few abstractions used across both frontend and backend.
 
-6.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
+You should also have a `.env` at the root project directory that has two keys: [`DB_PATH`, `DB_NAME`] for the DB connection to be established correctly. This file must not be pushed to version control.
 
 ## 💫 Deploy
 
