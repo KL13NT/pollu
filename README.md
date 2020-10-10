@@ -1,16 +1,21 @@
 <p align="center">
   <a href="https://pollu.vercel.app">
-    <img alt="Pollu" src="./public/assets/cover.png" />
+    <img alt="Pollu" src="./public/assets/logo_dark.png" width="550"/>
   </a>
 </p>
 
 <h1 align="center">
-  Pollu
+  Pollu 🚀
 </h1>
 
-## Delightful polls a click away! 🥳
-Pollu is an open-source straw poll platform built with privacy in mind! 🚀 It doesn't store your voters personal data, does its best to prevent duplicate and spam votes, and responds as fast as spawning a node js process. A single-language stack makes it easier for JavaScript to contribute. I tried my best to keep the codebase simple and straight forward. 
+## Pollu
+> Pollu is an open-source straw poll platform built with privacy in mind! 🚀 
 
+It doesn't store your voters personal data, does its best to prevent duplicate and spam votes, and responds as fast as spawning a node js process. A single-language stack makes it easier for JavaScript to contribute. I tried my best to keep the codebase simple and straight forward. 
+
+<p align="center">
+  <img alt="Pollu" src="./public/assets/cover.png" width="550"/>
+</p>
 
 ## 🚀 Quick start
 This project uses the following stack: 
