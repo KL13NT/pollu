@@ -5,8 +5,13 @@ module.exports = {
 		removeDeprecatedGapUtilities: true,
 		purgeLayersByDefault: true
 	},
-	purge: [],
+	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
+		inset: {
+			0: 0,
+			auto: 'auto',
+			16: '16px'
+		},
 		extend: {
 			colors: {
 				primary: '#FFFFFF',
