@@ -1,9 +1,12 @@
 import React from 'react'
 
-export function Button({ children, className, ...props }) {
+export function Button({ children, auto, className, ...props }) {
 	return (
 		<>
-			<button className={`button ${className}`} {...props}>
+			<button
+				className={`button ${className} ${auto ? 'w-auto' : 'w-full'}`}
+				{...props}
+			>
 				{children}
 			</button>
 		</>
