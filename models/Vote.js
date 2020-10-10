@@ -6,7 +6,7 @@ const Vote = new Schema({
 		required: true
 	},
 	poll: { type: Types.ObjectId, required: true },
-	option: { type: Number, required: true }
+	selected: { type: [Number], required: true }
 })
 
 Vote.index({ author: 1, poll: 1 })
