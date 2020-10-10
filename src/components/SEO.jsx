@@ -73,7 +73,7 @@ function SEO({ title, description = defaults.description, image }) {
 				content='/icons/mstile-144x144.png'
 			/>
 
-			{image ? <Images image={image} /> : null}
+			{image ? <Images image='/assets/cover.png' /> : null}
 		</Head>
 	)
 }

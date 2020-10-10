@@ -33,7 +33,7 @@ body {
 }
 
 .option {
-	@apply w-full block relative p-2 capitalize text-primary font-normal text-lg text-center cursor-pointer;
+	@apply w-full block relative p-2 text-primary font-normal text-lg text-center cursor-pointer;
 }
 
 .option input:checked ~ span:nth-of-type(2) {
