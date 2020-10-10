@@ -1,12 +1,8 @@
 <p align="center">
   <a href="https://pollu.vercel.app">
-    <img alt="Pollu" src="./public/assets/logo_dark.png" width="550"/>
+    <img alt="Pollu" src="./public/assets/logo_dark.svg" width="550"/>
   </a>
 </p>
-
-<h1 align="center">
-  Pollu 🚀
-</h1>
 
 ## Pollu
 > Pollu is an open-source straw poll platform built with privacy in mind! 🚀 
