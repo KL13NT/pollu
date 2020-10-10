@@ -6,10 +6,8 @@
 		"DB_NAME": "@db_name",
 		"SENTRY_KEY": "@sentry"
 	},
-	"routes": [
-		{
-			"src": "/api/.*",
-			"dest": "/api/index.js"
-		}
+	"redirects": [
+		{ "source": "/api/*", "destination": "/api/index.js" },
+		{ "source": "/about", "destination": "https://github.com/KL13NT/pollu" }
 	]
 }
