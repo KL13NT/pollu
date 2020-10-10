@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 function useToasts() {
-	const [notification, set] = useState(null)
+	const [toast, set] = useState(null)
 	const timeout = useRef(null)
 
 	useEffect(() => {
@@ -10,9 +10,9 @@ function useToasts() {
 		timeout.current = setTimeout(() => {
 			set(null)
 		}, 5000)
-	}, [notification])
+	}, [toast])
 
-	return [notification, set]
+	return [toast, set]
 }
 
 function Toast({ children, className, ...props }) {

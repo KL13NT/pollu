@@ -32,20 +32,24 @@ body {
 	@apply transform translate-x-full;
 }
 
-.option-base {
-	@apply p-2 rounded-lg capitalize text-primary text-center w-full font-normal text-lg cursor-pointer w-full block transition duration-200;
-}
-
-.option-base input {
-	@apply hidden;
-}
-
 .option {
-	@apply option-base bg-border;
+	@apply w-full block relative p-2 capitalize text-primary font-normal text-lg text-center cursor-pointer;
 }
 
-.option-checked {
-	@apply option-base bg-focus;
+.option input:checked ~ span:nth-of-type(2) {
+	@apply bg-focus;
+}
+
+.option span:nth-of-type(1) {
+	@apply relative z-10;
+}
+
+.option span:nth-of-type(2) {
+	@apply absolute top-0 left-0 w-full h-full rounded-lg block transition duration-200 bg-border;
+}
+
+.option input {
+	@apply hidden;
 }
 
 .tip-base {
@@ -61,11 +65,30 @@ body {
 }
 
 .result {
-	@apply py-2 px-4 rounded-lg capitalize text-primary bg-border text-center w-full font-normal w-full transition duration-200 relative flex justify-between items-center overflow-hidden;
+	@apply py-2 px-4 rounded-lg capitalize text-primary bg-border text-center w-full font-normal transition duration-200 relative flex justify-between items-center overflow-hidden text-lg;
+}
+
+.result > div {
+	transform-origin: left;
+	animation-name: results;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+	animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+@keyframes results {
+	0% {
+		transform: scaleX(0);
+	}
+	100% {
+		transform: scaleX(1);
+	}
 }
 
 .button {
-	@apply p-2 rounded-lg capitalize text-secondary bg-action text-center w-full font-bold text-lg border-2 border-transparent transition-all duration-200;
+	@apply p-2 rounded-lg capitalize text-secondary bg-action text-center font-bold text-lg border-2 border-transparent transition-all duration-200;
 }
 
 .button:focus,
@@ -88,27 +111,21 @@ body {
 }
 
 .toast {
-	@apply button m-auto fixed left-0 right-0 w-11/12 block normal-case max-w-screen-sm;
+	@apply button m-auto absolute left-0 top-0 right-0 w-full block normal-case rounded-none;
 
-	animation-name: popinoutMobile;
-	animation-duration: 4.5s;
+	animation-name: fall;
+	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 	animation-iteration-count: 1;
 	animation-play-state: running;
 	animation-timing-function: cubic-bezier(1, 0, 0, 1);
 }
 
-@keyframes popinoutMobile {
+@keyframes fall {
 	0% {
 		transform: translateY(-300%);
 	}
-	5% {
-		transform: translateY(0);
-	}
-	95% {
-		transform: translateY(0);
-	}
 	100% {
-		transform: translateY(-300%);
+		transform: translateY(0);
 	}
 }
