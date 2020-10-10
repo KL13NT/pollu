@@ -3,20 +3,17 @@ import Head from 'next/head'
 
 const defaults = {
 	sitename: 'Pollu',
-	title: 'Pollu - Delightful polls a click away!',
-	description:
-		'Pollu is an anonymous straw polls platform built by Nabil Tharwat with a focus on accessibility and privacy.'
+	title: 'Pollu | Delightful polls a click away!',
+	description: 'Pollu is straw poll platform built with privacy in mind.'
 }
 
 const Images = ({ image }) => {
-	const ogImageUrl = `${hostname}/${image}`
-
 	return (
 		<>
-			<meta content={ogImageUrl} property='og:image' />
-			<meta content={ogImageUrl} property='og:image:url' />
-			<meta content={ogImageUrl} property='og:image:secure_url' />
-			<meta content={ogImageUrl} property='twitter:image' />
+			<meta content={image} property='og:image' />
+			<meta content={image} property='og:image:url' />
+			<meta content={image} property='og:image:secure_url' />
+			<meta content={image} property='twitter:image' />
 		</>
 	)
 }
@@ -33,11 +30,12 @@ function SEO({ title, description = defaults.description, image }) {
 			<meta content={description} property='og:description' />
 			<meta content={description} property='twitter:description' />
 			<meta content={'image/jpeg'} property='og:image:type' />
-			<meta content='summary_large_image' name='twitter:card'></meta>
+			<meta content='summary_large_image' name='twitter:card' />
 			<meta content='website' property='og:type' />
 			<meta content={defaults.sitename} property='og:site_name' />
 			<meta content='@Nabil_Tharwat' property='twitter:creator' />
 			<meta content='@Nabil_Tharwat16' property='twitter:site' />
+			<meta content='https://pollu.vercel.app' property='og:url' />
 
 			<link rel='manifest' href='/manifest.webmanifest' />
 
@@ -73,7 +71,7 @@ function SEO({ title, description = defaults.description, image }) {
 				content='/icons/mstile-144x144.png'
 			/>
 
-			{image ? <Images image='/assets/cover.png' /> : null}
+			<Images image='https://pollu.vercel.app/assets/cover.png' />
 		</Head>
 	)
 }
