@@ -5,8 +5,6 @@ import { ErrorBoundary } from '@sentry/react'
 
 import Error from '../../pages/_error'
 
-import { Button } from './Button'
-
 export function Layout({ children }) {
 	return (
 		<div className='bg-background text-center text-lg p-8 max-w-screen-sm m-auto'>

@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/react'
 
 import { Layout } from '../src/components/Layout'
 
-import '../src/styles.css'
+import '../src/styles/index.css'
 
 Sentry.init({ dsn: process.env.SENTRY_KEY })
 

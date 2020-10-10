@@ -21,7 +21,7 @@ body {
 }
 
 .toggle > span > span:nth-child(2) {
-	@apply absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 transition-transform duration-300 ease-in-out bg-white;
+	@apply absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 transition-transform duration-300 ease-in-out bg-primary;
 }
 
 .toggle > span > span:nth-child(2) > input {
