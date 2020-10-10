@@ -1,27 +1,26 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
+import { useRef } from 'react'
 
-export function Option({ children, label, onChange, ...props }) {
-  const [checked, set] = useState(false)
+export function Option({ label, children, className, htmlFor, ...props }) {
+	return (
+		<>
+			<label className={`option ${className}`} htmlFor={htmlFor}>
+				<span>{children}</span>
+				<input type='checkbox' className='hidden' {...props} />
+				<span />
+			</label>
+		</>
+	)
+}
 
-  const toggle = () => {
-    onChange(!checked)
-    set(!checked)
-  }
-
-  const classes = checked ? "option-checked" : "option"
-
-  return (
-    <>
-      <label className={classes} label={label || children}>
-        {children}
-        <input
-          type="checkbox"
-          className="hidden"
-          checked={checked}
-          onChange={toggle}
-          {...props}
-        />
-      </label>
-    </>
-  )
+export function Radio({ label, children, className, htmlFor, ...props }) {
+	return (
+		<>
+			<label className={`option ${className}`} htmlFor={htmlFor}>
+				<span>{children}</span>
+				<input type='radio' className='hidden' {...props} />
+				<span />
+			</label>
+		</>
+	)
 }
