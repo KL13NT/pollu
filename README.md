@@ -4,7 +4,7 @@
   </a>
 </p>
 
-## Pollu
+## 🛰️ Pollu
 > Pollu is an open-source straw poll platform built with privacy in mind! 🚀 
 
 It doesn't store your voters personal data, does its best to prevent duplicate and spam votes, and responds as fast as spawning a node js process. A single-language stack makes it easier for JavaScript to contribute. I tried my best to keep the codebase simple and straight forward. 
