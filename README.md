@@ -53,12 +53,10 @@ This project uses the following stack:
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
     .
-    ├── .cache
     ├── .next
     ├── .storybook
     ├── .vercel
     ├── api
-    ├── src
     ├── models
     ├── node_modules
     ├── pages
@@ -66,11 +64,27 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── src
     ├── utils
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+1.  **`/.next`**: This directory is produced by Nextjs for development purposes.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+2.  **`/.storybook`**: This directory includes configuration files for Storybook.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+3.  **`/.vercel`**: This directory (produced after you init your project with the vercel CLI) is used to store important information related to the deployed site. If you're contributing to the main website at `pollu.vercel.app` then you won't need this folder.
+
+4.  **`/api`**: This directory contains all API serverless functions.
+
+5.  **`/models`**: This directory contains all Mongoose models.
+
+6.  **`/node_modules`**: This directory contains all installed packages.
+
+7.  **`/pages`**: This directory contains all frontend pages, SSG'ed and SSR'ed.
+
+8.  **`/public`**: This directory contains all files you wish to turn up in the production website output.
+
+9.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end (what you see in the browser) such as React components, Storybook stories, and styling. `src` is a convention for “source code”.
+
+10.  **`/utils`**: 
+
+6.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 
 4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
