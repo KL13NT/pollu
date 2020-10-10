@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://pollu.vercel.app">
-    <img alt="Pollu" src="./public/assets/logo_dark.svg" width="550"/>
+    <img alt="Pollu" src="./public/assets/logo_dark.svg" width="250"/>
   </a>
 </p>
 
