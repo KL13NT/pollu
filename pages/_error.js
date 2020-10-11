@@ -11,7 +11,7 @@ function Error({ code, error } = defaults) {
 	return (
 		<>
 			<img src='/assets/doge_sad.jpg' className='h-64 m-auto mt-12' />
-			<h1 className='sm:text-2xl lg:text-6xl md:text-4xl font-bold text-center mt-4 leading-none'>{`<${code}>`}</h1>
+			<h1 className='sm:text-2xl text-4xl md:text-4xl font-bold text-center mt-4 leading-none'>{`<${code}>`}</h1>
 			<p className='text-lg mt-2'>{error}</p>
 			<Button className='mt-8' onClick={reload}>
 				Reload

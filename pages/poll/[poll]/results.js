@@ -57,13 +57,22 @@ const ResultsPage = props => {
 }
 
 export async function getServerSideProps({ res, params }) {
-	const data = await (await fetch(`${server}/${params.poll}/results`)).json()
+	try {
+		const data = await (await fetch(`${server}/${params.poll}/results`)).json()
 
-	res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
+		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
-	return {
-		props: {
-			...data
+		return {
+			props: {
+				...data
+			}
+		}
+	} catch (err) {
+		return {
+			props: {
+				error: err.message,
+				code: 'GENERIC'
+			}
 		}
 	}
 }

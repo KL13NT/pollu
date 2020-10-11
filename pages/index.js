@@ -5,8 +5,8 @@ import { Toggle } from '../src/components/Toggle'
 import { Button } from '../src/components/Button'
 import { useToasts, Toast } from '../src/components/Toast'
 import { SEO } from '../src/components/SEO'
+import { Loader } from '../src/components/Loader'
 
-//TODO: detect duplicate fields both frontend and backend
 const DynamicFields = ({ onChange: changeHandler }) => {
 	const [fields, setFields] = useState(['', '', ''])
 
@@ -51,7 +51,7 @@ const DynamicFields = ({ onChange: changeHandler }) => {
 
 const IndexPage = () => {
 	const [toast, setToast] = useToasts()
-	const [disabled, toggle] = useState(false)
+	const [loading, setLoading] = useState(false)
 	const [state, setState] = useState({
 		question: '',
 		multiple: false,
@@ -73,8 +73,6 @@ const IndexPage = () => {
 	const onSubmit = e => {
 		e.preventDefault()
 
-		console.log(state)
-
 		const poll = {
 			...state,
 			options: state.options.filter(option => option.length > 0)
@@ -83,11 +81,10 @@ const IndexPage = () => {
 		if (poll.options.length < 2)
 			return setToast('You must create at least 2 options')
 
-		toggle(true)
+		setLoading(true)
 		setToast('Creating poll, please wait')
 
-		//TODO: detect duplicate options
-		fetch('/api/v1', {
+		fetch('/api/v1/create', {
 			body: JSON.stringify(poll),
 			method: 'POST',
 			headers: {
@@ -97,14 +94,17 @@ const IndexPage = () => {
 			.then(res => res.json())
 			.then(res => {
 				if (res.error) return setToast(res.error)
+
 				setToast('Created poll successfully, redirecting you.')
 				window.location.href = `/poll/${res.poll}`
 			})
 			.catch(err => {
-				setToast(err.error)
+				console.log(err)
+				setToast('Something went wrong')
 			})
 			.finally(() => {
-				toggle(false)
+				console.log('FINALLY')
+				setLoading(false)
 			})
 	}
 
@@ -119,12 +119,13 @@ const IndexPage = () => {
 				<p className='mt-4 text-alternative text-base'>
 					Fill these boxes to create a poll right away!
 				</p>
-				<fieldset disabled={disabled}>
+				<fieldset disabled={loading}>
 					<Input
 						id='question'
 						name='question'
 						placeholder="What's on your mind?"
 						maxLength='280'
+						minLength='6'
 						label='question'
 						className='mt-4'
 						type='text'
@@ -149,12 +150,16 @@ const IndexPage = () => {
 						/>
 					</div>
 
-					<Button type='submit' className='mt-4'>
-						Create Poll
+					<Button
+						type='submit'
+						className='mt-4 disabled:opacity-50 disabled:cursor-not-allowed'
+					>
+						{loading ? <Loader /> : 'Create Poll'}
 					</Button>
 				</fieldset>
 			</form>
 		</>
 	)
 }
+
 export default IndexPage

@@ -8,31 +8,33 @@ import { Option, Radio } from '../../src/components/Option'
 import { Button } from '../../src/components/Button'
 import { Toast, useToasts } from '../../src/components/Toast'
 import { SEO } from '../../src/components/SEO'
+import { Loader } from '../../src/components/Loader'
+
 import Error from '../_error'
 
-const Multiple = ({ state, onChange }) => {
+const Multiple = ({ state, ...props }) => {
 	return state.options.map(option => (
 		<Option
 			className='mt-4'
-			onChange={onChange}
 			name='selected'
 			label={option}
 			value={option}
+			{...props}
 		>
 			{option}
 		</Option>
 	))
 }
 
-const Single = ({ state, onChange }) => {
+const Single = ({ state, ...props }) => {
 	return state.options.map((option, i) => (
 		<Radio
 			className='mt-4'
-			onChange={onChange}
 			name='selected'
 			value={i}
 			id={option}
 			label={option}
+			{...props}
 		>
 			{option}
 		</Radio>
@@ -43,7 +45,7 @@ const PollPage = props => {
 	if (props.error) return <Error {...props} />
 
 	const [toast, setToast] = useToasts(null)
-	const [disabled, toggle] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	const onSubmit = e => {
 		e.preventDefault()
@@ -64,7 +66,8 @@ const PollPage = props => {
 			body.selected = [new FormData(e.target).get('selected')]
 		}
 
-		toggle(true)
+		setToast('Voting...')
+		setLoading(true)
 		fetch(`/api/v1/${props._id}/vote`, {
 			method: 'POST',
 			headers: {
@@ -82,7 +85,7 @@ const PollPage = props => {
 				setToast('Something went wrong')
 			})
 			.finally(() => {
-				toggle(false)
+				setLoading(false)
 			})
 	}
 
@@ -104,7 +107,7 @@ const PollPage = props => {
 			<h1 className='mt-4 text-4xl'>{props.question}</h1>
 
 			<form className='mt-8' onSubmit={onSubmit}>
-				<fieldset disabled={disabled}>
+				<fieldset disabled={loading}>
 					{props.multiple ? (
 						<Multiple state={props} onChange={onMultipleToggle} />
 					) : (
@@ -118,7 +121,7 @@ const PollPage = props => {
 					</span>
 
 					<Button type='submit' className='mt-4'>
-						Vote
+						{loading ? <Loader /> : 'Vote'}
 					</Button>
 
 					<Link href={`/poll/${props._id}/results`}>
@@ -131,13 +134,22 @@ const PollPage = props => {
 }
 
 export async function getServerSideProps({ res, params }) {
-	const data = await (await fetch(`${server}/${params.poll}`)).json()
+	try {
+		const data = await (await fetch(`${server}/${params.poll}`)).json()
 
-	res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
+		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
-	return {
-		props: {
-			...data
+		return {
+			props: {
+				...data
+			}
+		}
+	} catch (err) {
+		return {
+			props: {
+				error: err.message,
+				code: 'GENERIC'
+			}
 		}
 	}
 }

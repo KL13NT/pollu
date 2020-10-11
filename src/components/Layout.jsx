@@ -8,7 +8,7 @@ import Error from '../../pages/_error'
 
 export function Layout({ children }) {
 	return (
-		<div className='bg-background text-center text-lg p-8 max-w-screen-sm m-auto'>
+		<div className='text-center text-lg p-8 max-w-screen-sm m-auto'>
 			<noscript>
 				<Toast>Creating polls and voting require JavaScript.</Toast>
 			</noscript>
