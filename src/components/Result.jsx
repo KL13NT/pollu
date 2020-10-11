@@ -1,7 +1,7 @@
 import React from 'react'
 
 export function Result({ children, percentage, className, ...props }) {
-	let percentageRounded = Math.round(parseFloat(percentage) * 10)/10;
+	const rounded = Math.round(parseFloat(percentage) * 10)/10;
 	return (
 		<>
 			<div className={`result ${className}`} {...props}>
