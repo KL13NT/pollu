@@ -16,7 +16,7 @@ const DynamicFields = ({ onChange: changeHandler }) => {
 		if (nOfEmptyFields === 0 && fields.length < 20) setFields([...fields, ''])
 	}
 
-	const onChange = e => {		
+	const onChange = e => {
 		const index = Number(e.target.dataset.index)
 
 		const copy = Array.from(fields)
