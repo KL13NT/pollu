@@ -6,10 +6,14 @@
 		"DB_NAME": "@db_name",
 		"SENTRY_KEY": "@sentry"
 	},
-	"rewrites": [
+	"redirects": [
 		{
-			"source": "/api/(.*)",
-			"destination": "/api"
+			"source": "/about",
+			"destination": "https://github.com/KL13NT/pollu"
+		},
+		{
+			"source": "/issues",
+			"destination": "https://github.com/KL13NT/pollu/issues"
 		}
 	]
 }
