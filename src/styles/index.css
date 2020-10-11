@@ -6,6 +6,8 @@
 
 body {
 	@apply font-sans bg-background text-primary;
+
+	background-image: url('../../public/assets/bg_pattern.svg');
 }
 
 .toggle {
