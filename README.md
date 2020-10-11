@@ -53,7 +53,7 @@ This project uses the following stack:
 
 ## 🧐 What's inside?
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at the top-level files and directories you'll see in this project.
 
     .
     ├── .next
@@ -88,6 +88,21 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 You should also have a `.env` at the root project directory that has two keys: [`DB_PATH`, `DB_NAME`] for the DB connection to be established correctly. This file must not be pushed to version control.
 
+> ⚠️ I use prettier and eslint to manage style in this repo. Make sure you install them accordingly to save development time and make sure your contributions are compatible.
+
+> ⚠️ I use the Angular [commit message format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format) so make sure you follow that when contributing.
+
 ## 💫 Deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/KL13NT/pollu)
+
+## ✋ Wish to Contribute?
+
+I'm are open to all kinds of contributions. If you want to:
+
+    🤔 Suggest a feature
+    🐛 Report an issue
+    📖 Improve documentation
+    👩‍💻 Contribute to the code
+
+You are more than welcome. Before contributing, kindly check the [guidelines](./CONTRIBUTING.md).

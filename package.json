@@ -1,9 +1,9 @@
 {
-	"name": "gatsby-starter-default",
+	"name": "pollu",
 	"private": true,
-	"description": "A simple starter to get up and developing quickly with Gatsby",
+	"description": "Delightful anonymous polls a click away!",
 	"version": "0.1.0",
-	"author": "Kyle Mathews <mathews.kyle@gmail.com>",
+	"author": "Nabil Tharwat <nabil.tharwat@outlook.com>",
 	"dependencies": {
 		"@sentry/node": "^5.25.0",
 		"@sentry/react": "^5.25.0",
@@ -57,15 +57,14 @@
 		"build": "next build",
 		"start": "next start",
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gatsbyjs/gatsby-starter-default"
+		"url": "https://github.com/KL13NT/pollu"
 	},
 	"bugs": {
-		"url": "https://github.com/gatsbyjs/gatsby/issues"
+		"url": "https://github.com/KL13NT/pollu/issues"
 	}
 }
