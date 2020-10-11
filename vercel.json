@@ -6,10 +6,19 @@
 		"DB_NAME": "@db_name",
 		"SENTRY_KEY": "@sentry"
 	},
-	"routes": [
+	"redirects": [
 		{
-			"src": "/api/.*",
-			"dest": "/api/index.js"
+			"source": "/api/(.*)",
+			"destination": "/api"
+		},
+		{
+			"source": "/user",
+			"destination": "/api/user",
+			"permanent": false
+		},
+		{
+			"source": "/view-source",
+			"destination": "https://github.com/vercel/vercel"
 		}
 	]
 }

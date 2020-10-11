@@ -184,7 +184,6 @@ app.post('/api/v1/', async (req, res) => {
 
 		const author = getIp(req)
 		// TODO: add rate-limit per IP
-		// TODO: encrypt
 
 		const poll = req.body
 

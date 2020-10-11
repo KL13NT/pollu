@@ -11,15 +11,7 @@ module.exports = {
 		purgeLayersByDefault: false
 	},
 
-	//FIXME: There's a bug with this configuration that makes utilities like
-	//'max-w-screen-sm' and 'relative' not work, while 'absolute' works. This is
-	//the case with the Toggle component. To reproduce: Set purge.layers to
-	//['utilities'] and run the production & serve commands `yarn build && yarn
-	//start` then navigate to localhost:3000. This will greet you with a 100%
-	//screen width container Layout instead of the `max-w-screen-sm` and a broken
-	//`Toggle`.
-
-	//The `layers=['utilities']` purge option produces an output initial load of 296.68 KB while with purging completely disabled like the following produces 297.09 KB. Execuse me? Also check https://nextjs.org/docs/advanced-features/customizing-postcss-config
+	//FIXME: see issue#5 https://github.com/KL13NT/pollu/issues/5
 	purge: {
 		enabled: false,
 		mode: 'layers',

@@ -5,16 +5,19 @@
 </p>
 
 ## 🛰️ Pollu
-> Pollu is an open-source straw poll platform built with privacy in mind! 🚀 
 
-It doesn't store your voters personal data, does its best to prevent duplicate and spam votes, and responds as fast as spawning a node js process. A single-language stack makes it easier for JavaScript to contribute. I tried my best to keep the codebase simple and straight forward. 
+> Pollu is an open-source straw poll platform built with privacy in mind! 🚀
+
+It doesn't store your voters personal data, does its best to prevent duplicate and spam votes, and responds as fast as spawning a node js process. A single-language stack makes it easier for JavaScript to contribute. I tried my best to keep the codebase simple and straight forward.
 
 <p align="center">
   <img alt="Pollu" src="./public/assets/cover.png" width="550"/>
 </p>
 
 ## 🚀 Quick start
-This project uses the following stack: 
+
+This project uses the following stack:
+
 - [NextJS](https://nextjs.org) (React SSR + SSG)
 - [TailwindCSS](https://tailwindcss.com) for quickly iterating designs and new components
 - [Vercel Serverless Functions](https://vercel.com/docs/serverless-functions/introduction) (+ 60s Edge Caching)
@@ -24,25 +27,25 @@ This project uses the following stack:
 - [StorybookJS](https://storybook.js.org) for component development
 
 1. **Install required packages**
-    I use Yarn, so the installation command is `yarn` or `yarn install`.
-    
-2. **Start developing on the frontend**
-    Navigate into the cloned repo directory and start it up.
+   I use Yarn, so the installation command is `yarn` or `yarn install`.
 
-    ```shell
-    cd pollu
-    yarn dev
-    ```
+2. **Start developing on the frontend**
+   Navigate into the cloned repo directory and start it up.
+
+   ```bash
+   cd pollu
+   yarn dev
+   ```
 
 3. **Start developing on both (backend and frontend)**
-    Navigate into the cloned repo directory and start it up.
+   Navigate into the cloned repo directory and start it up.
 
-    ```shell
-    cd pollu
-    vercel dev
-    ```
+   ```bash
+   cd pollu
+   vercel dev
+   ```
 
-> To develop the backend you need a running local mongodb instance.
+> ⚠️ To develop the backend you need a running local mongodb instance.
 
 4.  **Open the source code and start editing!**
 
@@ -81,7 +84,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 9.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end (what you see in the browser) such as React components, Storybook stories, and styling. `src` is a convention for “source code”.
 
-10.  **`/utils`**: A few abstractions used across both frontend and backend.
+10. **`/utils`**: A few abstractions used across both frontend and backend.
 
 You should also have a `.env` at the root project directory that has two keys: [`DB_PATH`, `DB_NAME`] for the DB connection to be established correctly. This file must not be pushed to version control.
 
