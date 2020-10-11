@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Input } from '../src/components/Input'
 import { Toggle } from '../src/components/Toggle'
@@ -7,25 +7,26 @@ import { useToasts, Toast } from '../src/components/Toast'
 import { SEO } from '../src/components/SEO'
 
 //TODO: detect duplicate fields both frontend and backend
-const DynamicFields = ({ onChange: changeHandler, options }) => {
+const DynamicFields = ({ onChange: changeHandler }) => {
 	const [fields, setFields] = useState(['', '', ''])
 
-	const shouldAdd = () => {
-		const n = fields.filter(field => field === '').length
+	const shouldAddField = () => {
+		const nOfEmptyFields = fields.filter(field => field === '').length
 
-		if (n === 0 && fields.length < 20) setFields([...fields, ''])
+		if (nOfEmptyFields === 0 && fields.length < 20) setFields([...fields, ''])
 	}
 
 	const onChange = e => {
-		const index = e.target.dataset.index
+		const index = Number(e.target.dataset.index)
 
 		const copy = Array.from(fields)
-		copy[index] = e.target.value.trim()
+		copy[index] = e.target.value
 
 		setFields(copy)
-		shouldAdd()
 		changeHandler(fields)
 	}
+
+	useEffect(shouldAddField, [fields])
 
 	return (
 		<div>
@@ -37,7 +38,7 @@ const DynamicFields = ({ onChange: changeHandler, options }) => {
 					maxLength={`160`}
 					label={`Option ${i + 1}`}
 					className={`mt-4`}
-					value={option.value}
+					value={option}
 					onChange={onChange}
 					key={i}
 					data-type='option'
