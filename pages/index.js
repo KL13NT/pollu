@@ -68,11 +68,11 @@ const IndexPage = () => {
 		setState({ ...state, multiple: value })
 	}
 
-	const onFieldsChange = fields => {		
+	const onFieldsChange = fields => {
 		setState({ ...state, options: fields })
 	}
 
-	const onChange = e => {		
+	const onChange = e => {
 		return setState({ ...state, question: e.target.value })
 	}
 
