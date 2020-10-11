@@ -122,9 +122,7 @@ const PollPage = props => {
 					</Button>
 
 					<Link href={`/poll/${props._id}/results`}>
-						<a className='mt-4 block text-base text-alternative'>
-							See results instead
-						</a>
+						<a className='mt-4 block text-base'>See results instead</a>
 					</Link>
 				</fieldset>
 			</form>

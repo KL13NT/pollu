@@ -48,11 +48,9 @@ const ResultsPage = props => {
 					</Button>
 				</span>
 
-				<Link href='/'>
-					<a className='mt-4 block text-base text-alternative'>
-						Create a vote instead
-					</a>
-				</Link>
+				<span className='mt-4 block text-base'>
+					This page updates every 60 seconds.
+				</span>
 			</div>
 		</>
 	)
