@@ -1,3 +1,7 @@
+// NOTE: all /api routes are routed to this path where express handles them, I
+// may split them over multiple files, but don't wanna sacrifice clarity when
+// navigating files.
+
 const express = require('express')
 const cors = require('cors')
 const joi = require('joi')

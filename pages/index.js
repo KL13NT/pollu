@@ -150,7 +150,7 @@ const IndexPage = () => {
 					</div>
 
 					<Button type='submit' className='mt-4'>
-						Creat Poll
+						Create Poll
 					</Button>
 				</fieldset>
 			</form>
