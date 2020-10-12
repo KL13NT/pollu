@@ -22,8 +22,14 @@ const DynamicFields = ({ onChange: changeHandler }) => {
 		const copy = Array.from(fields)
 		copy[index] = e.target.value
 
+		// There is a race where the state is not yet completed setting before 
+		// the changeHandler is called with the state value.
+		// Before React Hooks, we could solve this by using a callback, however it's
+		// a little tricker with Hooks.
+		// The simplest solution is to call the changeHandler with 
+		// the same value we set the state to.
 		setFields(copy)
-		changeHandler(fields)
+		changeHandler(copy)
 	}
 
 	useEffect(shouldAddField, [fields])
