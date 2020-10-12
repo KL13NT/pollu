@@ -101,7 +101,7 @@ const PollPage = props => {
 
 	return (
 		<>
-			<SEO />
+			<SEO title={props.question} description={`This poll has ${props.options.length} choices to choose from`} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
 			<h1 className='mt-4 text-4xl'>{props.question}</h1>
