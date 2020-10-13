@@ -18,12 +18,10 @@ const DynamicFields = ({ onChange: changeHandler }) => {
 
 	const onChange = e => {
 		const index = Number(e.target.dataset.index)
-
 		const copy = Array.from(fields)
 		copy[index] = e.target.value
-
 		setFields(copy)
-		changeHandler(fields)
+		changeHandler(copy)
 	}
 
 	useEffect(shouldAddField, [fields])
@@ -80,6 +78,8 @@ const IndexPage = () => {
 
 		if (poll.options.length < 2)
 			return setToast('You must create at least 2 options')
+		if (poll.options.some((a, i) => poll.options.indexOf(a) !== i))
+			return setToast('Your options must not contain duplicate values')
 
 		setLoading(true)
 		setToast('Creating poll, please wait')

@@ -5,7 +5,7 @@ const Poll = new Schema({
 		type: String,
 		required: true
 	},
-	options: { type: [String], required: true },
+	options: [{ type: String, unique: true }, { required: true }],
 	author: { type: String, required: true },
 	multiple: {
 		type: Boolean,
