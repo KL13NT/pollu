@@ -1,4 +1,7 @@
 <p align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://pollu.vercel.app">
     <img alt="Pollu" src="./public/assets/logo_dark.svg" width="250"/>
   </a>
@@ -106,3 +109,22 @@ I'm are open to all kinds of contributions. If you want to:
     👩‍💻 Contribute to the code
 
 You are more than welcome. Before contributing, kindly check the [guidelines](./CONTRIBUTING.md).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://www.karleypetracca.com"><img src="https://avatars1.githubusercontent.com/u/39736230?v=4" width="100px;" alt=""/><br /><sub><b>Karley Petracca</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=karleypetracca" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
