@@ -120,6 +120,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mojiwa"><img src="https://avatars2.githubusercontent.com/u/14992663?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mo Jiwa</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=mojiwa" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/saptarsi29/"><img src="https://avatars1.githubusercontent.com/u/29809001?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saptarsi Saha</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=saptarsi96" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/karleypetracca"><img src="https://avatars1.githubusercontent.com/u/39736230?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Karley Petracca</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=karleypetracca" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/sybiljas"><img src="https://avatars3.githubusercontent.com/u/51464288?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sybil Jas</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=sybiljas" title="Code">💻</a></td>
   </tr>
 </table>
 
