@@ -22,11 +22,11 @@ const DynamicFields = ({ onChange: changeHandler }) => {
 		const copy = Array.from(fields)
 		copy[index] = e.target.value
 
-		// There is a race where the state is not yet completed setting before 
+		// There is a race where the state is not yet completed setting before
 		// the changeHandler is called with the state value.
 		// Before React Hooks, we could solve this by using a callback, however it's
 		// a little tricker with Hooks.
-		// The simplest solution is to call the changeHandler with 
+		// The simplest solution is to call the changeHandler with
 		// the same value we set the state to.
 		setFields(copy)
 		changeHandler(copy)
@@ -86,6 +86,17 @@ const IndexPage = () => {
 
 		if (poll.options.length < 2)
 			return setToast('You must create at least 2 options')
+
+		// Check if duplicate option values exist
+		let duplicates = poll.options.filter(
+			(option, i) => poll.options.indexOf(option) !== i
+		)
+		if (duplicates.length) {
+			return setToast(
+				`Multiple options found with text '${duplicates[0]}'.` +
+					` Please change duplicates and try again.`
+			)
+		}
 
 		setLoading(true)
 		setToast('Creating poll, please wait')
