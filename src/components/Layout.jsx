@@ -16,7 +16,7 @@ export function Layout({ children }) {
 				<Link href='/'>
 					<a>
 						<img
-							src='/assets/logo.svg'
+							src='/assets/logo_standalone.svg'
 							alt='Pollu logo'
 							className='block m-auto h-16'
 						/>
@@ -39,7 +39,7 @@ export function Layout({ children }) {
 					Created by{' '}
 					<a
 						href='https://iamnabil.netlify.app'
-						className='text-action'
+						className='underline'
 						target='_blank'
 						referrerPolicy='origin-when-cross-origin'
 					>
@@ -48,7 +48,7 @@ export function Layout({ children }) {
 					.{' '}
 					<a
 						href='https://github.com/KL13NT/pollu'
-						className='text-action'
+						className='underline'
 						target='_blank'
 						referrerPolicy='origin-when-cross-origin'
 					>

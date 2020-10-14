@@ -24,6 +24,7 @@ export const createSchema = joi
 			.min(2)
 			.max(20)
 			.required()
+			.unique()
 	})
 	.required()
 
