@@ -27,9 +27,10 @@ const ResultsPage = props => {
 
 	if (props.error) return <Error {...props} />
 
+	const description = `Click the link to vote now! This post has ${props.options.length} choices.`
 	return (
 		<>
-			<SEO />
+			<SEO title={props.question} description={description} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
 			<h1 className='mt-4 text-4xl'>{props.question}</h1>
