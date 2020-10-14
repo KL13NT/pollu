@@ -33,7 +33,8 @@ module.exports = {
 			background: '#202040',
 			border: '#543864',
 			focus: '#793A9D',
-			progress: '#FF6363'
+			progress: '#FF6363',
+			white: '#fff'
 		},
 		extend: {
 			spacing: {

@@ -23,7 +23,7 @@ body {
 }
 
 .toggle > span > span:nth-child(2) {
-	@apply absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 transition-transform duration-300 ease-in-out bg-primary;
+	@apply absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 transition-all duration-300 ease-in-out bg-primary bg-white opacity-50;
 }
 
 .toggle > span > span:nth-child(2) > input {
@@ -31,11 +31,11 @@ body {
 }
 
 .toggle[data-checked='true'] > span > span:nth-child(2) {
-	@apply transform translate-x-full;
+	@apply transform translate-x-full opacity-100;
 }
 
 .option {
-	@apply w-full block relative p-2 text-primary font-normal text-lg text-center cursor-pointer;
+	@apply w-full block relative p-2 text-white font-normal text-lg text-center cursor-pointer;
 }
 
 .option input:checked ~ span:nth-of-type(2) {
@@ -67,7 +67,7 @@ body {
 }
 
 .result {
-	@apply py-2 px-4 rounded-lg capitalize text-primary bg-border text-center w-full font-normal transition duration-200 relative flex justify-between items-center overflow-hidden text-lg;
+	@apply py-2 px-4 rounded-lg capitalize text-white bg-border text-center w-full font-normal transition duration-200 relative flex justify-between items-center overflow-hidden text-lg;
 }
 
 .result > div {
@@ -111,6 +111,10 @@ body {
 	@apply py-2 pl-4 pr-2 rounded-lg border-2 bg-transparent border-border text-primary transition-all duration-200 text-lg w-full outline-none;
 }
 
+.input::placeholder {
+	@apply text-primary opacity-50;
+}
+
 .input:active,
 .input:focus {
 	@apply border-focus;
@@ -118,7 +122,7 @@ body {
 
 .input:active::placeholder,
 .input:focus::placeholder {
-	@apply text-primary;
+	@apply opacity-75;
 }
 
 .toast {
