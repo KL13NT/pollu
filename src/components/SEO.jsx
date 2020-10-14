@@ -18,7 +18,7 @@ const Images = ({ image }) => (
 
 function SEO({ title, description = defaults.description, image }) {
 	const finalTitle = title ? `${title} | Pollu` : defaults.title
-
+	
 	return (
 		<>
 			<Head>
