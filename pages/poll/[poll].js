@@ -99,9 +99,10 @@ const PollPage = props => {
 		return true
 	}
 
+	const description = `Click the link to view the results of this poll!`
 	return (
 		<>
-			<SEO />
+			<SEO title={props.question} description={description} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
 			<h1 className='mt-4 text-4xl'>{props.question}</h1>
@@ -136,7 +137,7 @@ const PollPage = props => {
 export async function getServerSideProps({ res, params }) {
 	try {
 		const data = await (await fetch(`${server}/${params.poll}`)).json()
-
+		res.statusCode = data.statusCode || 200
 		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
 		return {

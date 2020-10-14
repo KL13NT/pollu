@@ -27,9 +27,10 @@ const ResultsPage = props => {
 
 	if (props.error) return <Error {...props} />
 
+	const description = `Click the link to vote now! This post has ${props.options.length} choices.`
 	return (
 		<>
-			<SEO />
+			<SEO title={props.question} description={description} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
 			<h1 className='mt-4 text-4xl'>{props.question}</h1>
@@ -59,7 +60,7 @@ const ResultsPage = props => {
 export async function getServerSideProps({ res, params }) {
 	try {
 		const data = await (await fetch(`${server}/${params.poll}/results`)).json()
-
+		res.statusCode = data.statusCode || 200
 		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
 		return {

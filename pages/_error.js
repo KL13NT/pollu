@@ -1,5 +1,7 @@
 import { Button } from '../src/components/Button'
 
+import { SEO } from '../src/components/SEO'
+
 const reload = () => window.location.reload()
 const defaults = {
 	code: 'BEEP_BOOP_ERROR',
@@ -7,22 +9,20 @@ const defaults = {
 }
 
 //FIXME: always 200 ![FIXED?]
+//TODO: Seems to be giving right statusCode other than 200 yet to need verify for all possible scenarios
+
 function Error({ code, error } = defaults) {
 	return (
 		<>
+			<SEO title={code} description={error} />
 			<img src='/assets/doge_sad.jpg' className='h-64 m-auto mt-12' />
-			<h1 className='sm:text-2xl text-4xl md:text-4xl font-bold text-center mt-4 leading-none'>{`<${code}>`}</h1>
+			<h1 className='sm: text-2xl lg:text-6xl md:text-4xl font-bold text-center mt-4 leading-none'>{`<${code}>`}</h1>
 			<p className='text-lg mt-2'>{error}</p>
 			<Button className='mt-8' onClick={reload}>
 				Reload
 			</Button>
 		</>
 	)
-}
-
-Error.getInitialProps = ({ res, err }) => {
-	const code = err ? err.statusCode : 404
-	return { code }
 }
 
 export default Error
