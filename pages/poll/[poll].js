@@ -64,6 +64,12 @@ const PollPage = props => {
 				.map(option => props.options.indexOf(option.value))
 		} else {
 			body.selected = [new FormData(e.target).get('selected')]
+				.filter(item => item != null) // If nothing is selected a null value would be inserted
+		}
+
+		if (body.selected.length < 1) {
+			setToast('You have to select at least 1 option')
+			return;
 		}
 
 		setToast('Voting...')
