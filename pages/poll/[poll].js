@@ -137,7 +137,6 @@ const PollPage = props => {
 export async function getServerSideProps({ res, params }) {
 	try {
 		const data = await (await fetch(`${server}/${params.poll}`)).json()
-		res.statusCode = data.statusCode || 200
 		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
 		return {

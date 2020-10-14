@@ -6,7 +6,7 @@ function Four0Four() {
 			<Error
 				code='NOT_FOUND'
 				error="I couldn't find the requested page, sorry... 🥺"
-			></Error>
+			/>
 		</>
 	)
 }
