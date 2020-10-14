@@ -118,6 +118,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/BamButz"><img src="https://avatars1.githubusercontent.com/u/7022144?v=4?s=100" width="100px;" alt=""/><br /><sub><b>BamButz</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=BamButz" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/mojiwa"><img src="https://avatars2.githubusercontent.com/u/14992663?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mo Jiwa</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=mojiwa" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/saptarsi29/"><img src="https://avatars1.githubusercontent.com/u/29809001?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saptarsi Saha</b></sub></a><br /><a href="https://github.com/KL13NT/pollu/commits?author=saptarsi96" title="Code">💻</a></td>
   </tr>
 </table>
 
