@@ -4,7 +4,8 @@ import Head from 'next/head'
 const defaults = {
 	sitename: 'Pollu',
 	title: 'Pollu | Delightful polls a click away!',
-	description: 'Pollu is straw poll platform built with privacy in mind.'
+	description: 'Pollu is straw poll platform built with privacy in mind.',
+	url: 'https://pollu.vercel.app'
 }
 
 const Images = ({ image }) => (
@@ -16,9 +17,9 @@ const Images = ({ image }) => (
 	</Head>
 )
 
-function SEO({ title, description = defaults.description, image }) {
+function SEO({ title, url, description = defaults.description }) {
 	const finalTitle = title ? `${title} | Pollu` : defaults.title
-	
+
 	return (
 		<>
 			<Head>
@@ -34,7 +35,10 @@ function SEO({ title, description = defaults.description, image }) {
 				<meta content={defaults.sitename} property='og:site_name' />
 				<meta content='@Nabil_Tharwat' property='twitter:creator' />
 				<meta content='@Nabil_Tharwat16' property='twitter:site' />
-				<meta content='https://pollu.vercel.app' property='og:url' />
+				<meta
+					content={`${defaults.url}${url}` || defaults.url}
+					property='og:url'
+				/>
 
 				<link rel='manifest' href='/manifest.webmanifest' />
 

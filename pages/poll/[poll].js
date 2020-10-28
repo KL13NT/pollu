@@ -1,6 +1,7 @@
-import { server } from '../../config.routes'
+import { server, host } from '../../config.routes'
 
 import Link from 'next/link'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 import { useState } from 'react'
 
@@ -63,13 +64,14 @@ const PollPage = props => {
 				.filter(option => option.checked)
 				.map(option => props.options.indexOf(option.value))
 		} else {
-			body.selected = [new FormData(e.target).get('selected')]
-				.filter(item => item != null) // If nothing is selected a null value would be inserted
+			body.selected = [new FormData(e.target).get('selected')].filter(
+				item => item != null
+			) // If nothing is selected a null value would be inserted
 		}
 
 		if (body.selected.length < 1) {
 			setToast('You have to select at least 1 option')
-			return;
+			return
 		}
 
 		setToast('Voting...')
@@ -95,34 +97,21 @@ const PollPage = props => {
 			})
 	}
 
-	const onSingleToggle = e => {
-		console.log(e.target)
-		return true
-	}
-
-	const onMultipleToggle = e => {
-		console.log(e.target)
-		return true
-	}
-
-	const description = `Click the link to view the results of this poll!`
+	const { multiple, question, _id, url, options } = props
+	const description = `Click the link to vote now! This poll has ${options.length} choices.`
 	return (
 		<>
-			<SEO title={props.question} description={description} />
+			<SEO title={question} description={description} url={url} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
-			<h1 className='mt-4 text-4xl'>{props.question}</h1>
+			<h1 className='mt-4 text-4xl'>{question}</h1>
 
 			<form className='mt-8' onSubmit={onSubmit}>
 				<fieldset disabled={loading}>
-					{props.multiple ? (
-						<Multiple state={props} onChange={onMultipleToggle} />
-					) : (
-						<Single state={props} onChange={onSingleToggle} />
-					)}
+					{multiple ? <Multiple state={props} /> : <Single state={props} />}
 
 					<span className='text-left mt-4 block text-base text-alternative'>
-						{props.multiple
+						{multiple
 							? 'You can select multiple answers'
 							: 'You can select only one answer'}
 					</span>
@@ -131,7 +120,7 @@ const PollPage = props => {
 						{loading ? <Loader /> : 'Vote'}
 					</Button>
 
-					<Link href={`/poll/${props._id}/results`}>
+					<Link href={`/poll/${_id}/results`}>
 						<a className='mt-4 block text-base'>See results instead</a>
 					</Link>
 				</fieldset>
@@ -140,13 +129,21 @@ const PollPage = props => {
 	)
 }
 
-export async function getServerSideProps({ res, params }) {
+/**
+ *
+ * @param {object} param0
+ * @param {NextApiResponse} param0.res
+ * @param {NextApiRequest} param0.req
+ */
+export async function getServerSideProps({ req, res, params }) {
 	try {
 		const data = await (await fetch(`${server}/${params.poll}`)).json()
+
 		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
 		return {
 			props: {
+				url: req.url,
 				...data
 			}
 		}

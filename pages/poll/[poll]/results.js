@@ -1,11 +1,10 @@
 import { server } from '../../../config.routes'
 
-import Link from 'next/link'
-
 import { Result } from '../../../src/components/Result'
 import { Button } from '../../../src/components/Button'
 import { useToasts, Toast } from '../../../src/components/Toast'
 import { SEO } from '../../../src/components/SEO'
+
 import Error from '../../_error'
 
 const Votes = ({ votes }) => {
@@ -15,7 +14,12 @@ const Votes = ({ votes }) => {
 }
 
 const ResultsPage = props => {
+	if (props.error) return <Error {...props} />
+
 	const [toast, setToast] = useToasts()
+
+	const { question, url, options } = props
+	const description = `Click the link to see the results now!`
 
 	const onShare = () =>
 		navigator.clipboard
@@ -25,19 +29,16 @@ const ResultsPage = props => {
 
 	const calcPercentage = votes => (votes ? (votes / props.votes) * 100 : 0)
 
-	if (props.error) return <Error {...props} />
-
-	const description = `Click the link to vote now! This post has ${props.options.length} choices.`
 	return (
 		<>
-			<SEO title={props.question} description={description} />
+			<SEO title={question} description={description} url={url} />
 			{toast ? <Toast>{toast}</Toast> : null}
 
-			<h1 className='mt-4 text-4xl'>{props.question}</h1>
+			<h1 className='mt-4 text-4xl'>{question}</h1>
 
 			<div className='mt-8'>
-				{props.options.map(op => (
-					<Result className='mt-4' percentage={calcPercentage(op.votes)}>
+				{options.map(op => (
+					<Result className='mt-4' percentage={calcPercentage(props.votes)}>
 						{op.value}
 					</Result>
 				))}
@@ -57,13 +58,21 @@ const ResultsPage = props => {
 	)
 }
 
-export async function getServerSideProps({ res, params }) {
+/**
+ *
+ * @param {object} param0
+ * @param {NextApiResponse} param0.res
+ * @param {NextApiRequest} param0.req
+ */
+export async function getServerSideProps({ req, res, params }) {
 	try {
 		const data = await (await fetch(`${server}/${params.poll}/results`)).json()
+
 		res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
 
 		return {
 			props: {
+				url: req.url,
 				...data
 			}
 		}
