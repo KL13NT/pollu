@@ -26,15 +26,15 @@ module.exports = {
 	theme: {
 		colors: {
 			transparent: 'transparent',
-			primary: '#FFFFFF',
-			secondary: '#000000',
-			alternative: '#B8B8B8',
-			action: '#FFBD69',
-			background: '#202040',
-			border: '#543864',
-			focus: '#793A9D',
-			progress: '#FF6363',
-			white: '#fff'
+			primary: 'var(--color-primary)',
+			secondary: 'var(--color-secondary)',
+			alternative: 'var(--color-alternative)',
+			action: 'var(--color-action)',
+			background: 'var(--color-background)',
+			border: 'var(--color-border)',
+			focus: 'var(--color-focus)',
+			progress: 'var(--color-progress)',
+			white: 'var(--color-white)'
 		},
 		extend: {
 			spacing: {
