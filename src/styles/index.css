@@ -1,6 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
 
 @tailwind base;
+
+:root {
+	--color-primary: #ffffff;
+	--color-secondary: #000000;
+	--color-alternative: #b8b8b8;
+	--color-action: #ffbd69;
+	--color-background: #202040;
+	--color-border: #543864;
+	--color-focus: #793a9d;
+	--color-progress: #ff6363;
+	--color-white: #ffffff;
+}
+/** purgecss start ignore */
+.theme-light {
+	--color-primary: #000000;
+	--color-secondary: #000000;
+	--color-alternative: #2d3748;
+	--color-action: #ffbd69;
+	--color-background: #ffffff;
+	--color-border: #543864;
+	--color-focus: #793a9d;
+	--color-progress: #ff6363;
+	--color-white: #ffffff;
+}
+/** purgecss end ignore */
+
 @tailwind components;
 @tailwind utilities;
 
