@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 import { ErrorBoundary } from '@sentry/react'
 import { Toast } from './Toast'
+import { Toggle } from './Toggle'
+import { themeSwitch } from '../../utils/themeswitch'
 
 import Error from '../../pages/_error'
 
 export function Layout({ children }) {
+  // sets default theme as dark on page load unless "themeLight" value in local storage
+  const [themeLight, setThemeLight] = useState()
+  useEffect(() => {
+    const initialTheme = JSON.parse(localStorage.getItem('themeLight')) || false
+    setThemeLight(initialTheme)
+    themeSwitch(initialTheme)
+	}, [])
+
+  // on toggle, sets theme state, alters theme using DOM manipulation and sets
+  // theme to local storage
+  const onToggleThemeLight = () => {
+    setThemeLight(!themeLight)
+    themeSwitch(!themeLight)
+    localStorage.setItem('themeLight', JSON.stringify(!themeLight))
+	}
+
 	return (
 		<div className='text-center text-lg p-8 max-w-screen-sm m-auto'>
 			<noscript>
@@ -34,6 +52,17 @@ export function Layout({ children }) {
 					combined with other information or when used to build a profile of an
 					individual, even if that individual's name is unknown.
 				</p>
+        
+        <div className='flex w-full justify-between items-center mt-8'>
+          <p>Toggle light theme</p>
+          <Toggle
+            label='Toggle light theme'
+            id='theme'
+            name='theme'
+            onChange={onToggleThemeLight}
+            value={themeLight}
+          />
+				</div>
 
 				<p className='mt-8 text-base'>
 					Created by{' '}
